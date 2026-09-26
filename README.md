@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📝 To-Do App
 
-## Getting Started
+A modern and responsive To-Do application built using Next.js, React, TypeScript, and Redux Toolkit.
 
-First, run the development server:
+This project allows users to create, manage, search, filter, edit, complete, and delete daily tasks with persistent data storage using LocalStorage.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Live Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Add new tasks
+- Add tasks using Enter key
+- Edit existing tasks
+- Cancel editing
+- Mark tasks as completed
+- Delete tasks with confirmation
+- Search tasks
+- Filter tasks by status
+- View task statistics
+- LocalStorage persistence
+- Loading state
+- Error handling
+- Empty states
+- Responsive design
+- Optimized React components
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🛠️ Technologies Used
 
-To learn more about Next.js, take a look at the following resources:
+- HTML
+- CSS
+- JavaScript
+- TypeScript
+- React
+- Redux Toolkit
+- React Redux
+- Next.js
+- LocalStorage
+- ESLint
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## ✨ Features in Detail
 
-## Deploy on Vercel
+### 1. Add Task
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Users can enter a task and add it to the task list.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The application also supports adding a task using the Enter key.
+
+---
+
+### 2. Task Validation
+
+The application validates task input before adding it.
+
+Rules:
+
+- Empty task is not allowed.
+- Task must contain at least 3 characters.
+
+Example:
+
+```text
+Hi

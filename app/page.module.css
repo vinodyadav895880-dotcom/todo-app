@@ -1,150 +1,969 @@
-.page {
-  --background: #fafafa;
-  --foreground: #fff;
+/* =========================
+   Main Container
+   ========================= */
 
-  --text-primary: #000;
-  --text-secondary: #666;
+.container {
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #eef2ff 0%,
+    #f8fafc 50%,
+    #eff6ff 100%
+  );
 
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-  --button-secondary-border: #ebebeb;
-
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-geist-sans);
-  background-color: var(--background);
-}
-
-.main {
-  display: flex;
-  flex: 1;
-  width: 100%;
-  max-width: 800px;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  background-color: var(--foreground);
-  padding: 120px 60px;
-}
-
-.intro {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 24px;
-}
-
-.intro h1 {
-  max-width: 320px;
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 48px;
-  letter-spacing: -2.4px;
-  text-wrap: balance;
-  color: var(--text-primary);
-}
-
-.intro p {
-  max-width: 440px;
-  font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
-  color: var(--text-secondary);
-}
-
-.intro a {
-  font-weight: 500;
-  color: var(--text-primary);
-}
-
-.ctas {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 440px;
-  gap: 16px;
-  font-size: 14px;
-}
-
-.ctas a {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
-  border: 1px solid transparent;
-  transition: 0.2s;
+  align-items: flex-start;
+
+  padding: 60px 20px;
+}
+
+
+/* =========================
+   Main Todo Card
+   ========================= */
+
+.todoCard {
+  width: 100%;
+  max-width: 700px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  padding: 38px;
+
+  border-radius: 20px;
+
+  border: 1px solid #e5e7eb;
+
+  box-shadow:
+    0 20px 50px rgba(15, 23, 42, 0.1);
+
+  backdrop-filter: blur(10px);
+}
+
+
+/* =========================
+   Heading
+   ========================= */
+
+.todoCard h1 {
+  margin: 0;
+
+  text-align: center;
+
+  font-size: 38px;
+
+  font-weight: 800;
+
+  background: linear-gradient(
+    90deg,
+    #2563eb,
+    #7c3aed
+  );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  text-align: center;
+
+  color: #64748b;
+
+  margin-top: 8px;
+
+  margin-bottom: 30px;
+
+  font-size: 15px;
+}
+
+
+/* =========================
+   Search
+   ========================= */
+
+.searchSection {
+  margin-bottom: 15px;
+}
+
+.searchSection input {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 14px 16px;
+
+  border: 1px solid #dbe2ea;
+
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  color: #1e293b;
+
+  font-size: 16px;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.searchSection input::placeholder {
+  color: #94a3b8;
+}
+
+.searchSection input:focus {
+  border-color: #6366f1;
+
+  box-shadow:
+    0 0 0 4px rgba(99, 102, 241, 0.1);
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================
+   Filter Buttons
+   ========================= */
+
+.filterButtons {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  margin-top: 22px;
+
+  margin-bottom: 18px;
+}
+
+.filterButton,
+.activeFilter {
+  padding: 9px 20px;
+
+  border-radius: 8px;
+
   cursor: pointer;
-  width: fit-content;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+
+.filterButton {
+  border: 1px solid #dbe2ea;
+
+  background: #ffffff;
+
+  color: #475569;
+}
+
+.filterButton:hover {
+  background: #f1f5f9;
+
+  border-color: #cbd5e1;
+
+  transform: translateY(-1px);
+}
+
+.activeFilter {
+  border: 1px solid #4f46e5;
+
+  background: linear-gradient(
+    135deg,
+    #4f46e5,
+    #7c3aed
+  );
+
+  color: white;
+
+  box-shadow:
+    0 5px 15px rgba(79, 70, 229, 0.2);
+}
+
+.activeFilter:hover {
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 7px 18px rgba(79, 70, 229, 0.25);
+}
+
+
+/* =========================
+   Add Task
+   ========================= */
+
+.inputSection {
+  display: flex;
+
+  gap: 10px;
+}
+
+.inputSection input {
+  flex: 1;
+
+  padding: 14px 16px;
+
+  border: 1px solid #dbe2ea;
+
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  color: #1e293b;
+
+  font-size: 16px;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.inputSection input::placeholder {
+  color: #94a3b8;
+}
+
+.inputSection input:focus {
+  border-color: #2563eb;
+
+  box-shadow:
+    0 0 0 4px rgba(37, 99, 235, 0.1);
+
+  transform: translateY(-1px);
+}
+
+.inputSection button {
+  padding: 14px 22px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #4f46e5
+  );
+
+  color: white;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 5px 15px rgba(37, 99, 235, 0.2);
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.inputSection button:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px rgba(37, 99, 235, 0.28);
+}
+
+.inputSection button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+
+/* =========================
+   Disabled Add Button
+   ========================= */
+
+.inputSection button:disabled {
+  background: #cbd5e1;
+
+  color: #64748b;
+
+  cursor: not-allowed;
+
+  box-shadow: none;
+
+  opacity: 0.8;
+}
+
+
+/* =========================
+   Form Error
+   ========================= */
+
+.formError {
+  color: #dc2626;
+
+  font-size: 14px;
+
+  margin-top: 8px;
+
+  margin-bottom: 0;
+
   font-weight: 500;
 }
 
-a.primary {
-  background: var(--text-primary);
-  color: var(--background);
+
+/* =========================
+   Task List
+   ========================= */
+
+.taskList {
+  margin-top: 30px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+
+/* =========================
+   Task Item
+   ========================= */
+
+.taskItem {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding: 16px;
+
+  background: #f8fafc;
+
+  border: 1px solid #e8edf3;
+
+  border-radius: 12px;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.taskItem:hover {
+  background: #ffffff;
+
+  border-color: #dbeafe;
+
+  box-shadow:
+    0 8px 20px rgba(15, 23, 42, 0.07);
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   Task Content
+   ========================= */
+
+.taskContent {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  min-width: 0;
+
+  flex: 1;
+}
+
+.taskContent input {
+  width: 18px;
+
+  height: 18px;
+
+  cursor: pointer;
+
+  flex-shrink: 0;
+
+  accent-color: #4f46e5;
+}
+
+.taskContent span {
+  word-break: break-word;
+
+  color: #1e293b;
+
+  font-size: 15px;
+}
+
+.completed {
+  text-decoration: line-through;
+
+  color: #94a3b8 !important;
+}
+
+
+/* =========================
+   Action Buttons
+   ========================= */
+
+.actionButtons {
+  display: flex;
+
   gap: 8px;
+
+  flex-shrink: 0;
 }
 
-a.secondary {
-  border-color: var(--button-secondary-border);
+
+/* =========================
+   Edit Button
+   ========================= */
+
+.editButton {
+  border: none;
+
+  background: #2563eb;
+
+  color: white;
+
+  padding: 8px 13px;
+
+  border-radius: 7px;
+
+  cursor: pointer;
+
+  font-weight: 600;
+
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
 }
 
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
+.editButton:hover {
+  background: #1d4ed8;
 
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 4px 10px rgba(37, 99, 235, 0.25);
 }
+
+
+/* =========================
+   Delete Button
+   ========================= */
+
+.deleteButton {
+  border: none;
+
+  background: #ef4444;
+
+  color: white;
+
+  padding: 8px 13px;
+
+  border-radius: 7px;
+
+  cursor: pointer;
+
+  font-weight: 600;
+
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+
+.deleteButton:hover {
+  background: #dc2626;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 4px 10px rgba(239, 68, 68, 0.25);
+}
+
+
+/* =========================
+   Edit Mode
+   ========================= */
+
+.editMode {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.editInput {
+  flex: 1;
+
+  min-width: 0;
+
+  padding: 12px 14px;
+
+  border: 1px solid #cbd5e1;
+
+  border-radius: 9px;
+
+  background: white;
+
+  color: #1e293b;
+
+  font-size: 16px;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.editInput:focus {
+  border-color: #6366f1;
+
+  box-shadow:
+    0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+
+/* =========================
+   Save Button
+   ========================= */
+
+.saveButton {
+  border: none;
+
+  background: #16a34a;
+
+  color: white;
+
+  padding: 8px 13px;
+
+  border-radius: 7px;
+
+  cursor: pointer;
+
+  font-weight: 600;
+
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+
+.saveButton:hover {
+  background: #15803d;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 4px 10px rgba(22, 163, 74, 0.25);
+}
+
+
+/* =========================
+   Cancel Button
+   ========================= */
+
+.cancelButton {
+  border: none;
+
+  background: #64748b;
+
+  color: white;
+
+  padding: 8px 13px;
+
+  border-radius: 7px;
+
+  cursor: pointer;
+
+  font-weight: 600;
+
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease;
+}
+
+.cancelButton:hover {
+  background: #475569;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================
+   Delete Confirmation
+   ========================= */
+
+.deleteConfirmation {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 15px;
+}
+
+.deleteMessage {
+  color: #475569;
+
+  font-size: 15px;
+
+  font-weight: 600;
+}
+
+
+/* =========================
+   Confirm Delete Button
+   ========================= */
+
+.confirmDeleteButton {
+  border: none;
+
+  background: #dc2626;
+
+  color: white;
+
+  padding: 8px 13px;
+
+  border-radius: 7px;
+
+  cursor: pointer;
+
+  font-weight: 600;
+
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+
+.confirmDeleteButton:hover {
+  background: #b91c1c;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 4px 10px rgba(220, 38, 38, 0.25);
+}
+
+
+/* =========================
+   Empty State
+   ========================= */
+
+.emptyState {
+  text-align: center;
+
+  padding: 45px 20px;
+
+  margin-top: 30px;
+
+  background: linear-gradient(
+    135deg,
+    #f8fafc,
+    #eef2ff
+  );
+
+  border: 1px dashed #cbd5e1;
+
+  border-radius: 14px;
+}
+
+.emptyIcon {
+  font-size: 44px;
+
+  margin-bottom: 12px;
+}
+
+.emptyState h3 {
+  margin: 0;
+
+  font-size: 20px;
+
+  color: #1e293b;
+}
+
+.emptyState p {
+  margin: 8px 0 0;
+
+  color: #64748b;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================
+   No Tasks
+   ========================= */
+
+.noTasks {
+  text-align: center;
+
+  color: #64748b;
+
+  padding: 20px;
+}
+
+
+/* =========================
+   Loading Message
+   ========================= */
+
+.loadingMessage {
+  text-align: center;
+
+  color: #64748b;
+
+  font-size: 16px;
+
+  padding: 30px;
+}
+
+
+/* =========================
+   Error Message
+   ========================= */
+
+.errorMessage {
+  text-align: center;
+
+  color: #dc2626;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  padding: 30px;
+}
+
+
+/* =========================
+   Statistics
+   ========================= */
+
+.statistics {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 12px;
+
+  margin-top: 28px;
+}
+
+.statBox {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 17px;
+
+  background: #f8fafc;
+
+  border: 1px solid #e8edf3;
+
+  border-radius: 12px;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.statBox:hover {
+  background: #ffffff;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 7px 18px rgba(15, 23, 42, 0.07);
+}
+
+.statNumber {
+  font-size: 26px;
+
+  font-weight: 800;
+
+  color: #1e293b;
+}
+
+.statLabel {
+  margin-top: 5px;
+
+  font-size: 13px;
+
+  color: #64748b;
+
+  font-weight: 500;
+}
+
+
+/* =========================
+   Responsive Design
+   ========================= */
 
 @media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
+
+  .container {
+    padding: 30px 15px;
   }
 
-  .intro {
-    gap: 16px;
+  .todoCard {
+    padding: 25px 20px;
+
+    border-radius: 16px;
   }
 
-  .intro h1 {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -1.92px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
+  .todoCard h1 {
+    font-size: 30px;
   }
 
-  .page {
-    --background: #000;
-    --foreground: #000;
 
-    --text-primary: #ededed;
-    --text-secondary: #999;
+  /* =========================
+     Add Task Mobile
+     ========================= */
 
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-    --button-secondary-border: #1a1a1a;
+  .inputSection {
+    flex-direction: column;
   }
-}
 
-.code {
-  font-family: var(--font-geist-mono);
-  font-size: 0.9em;
-  background: color-mix(in srgb, currentColor 8%, transparent);
-  padding: 0.1em 0.4em;
-  border-radius: 6px;
+  .inputSection button {
+    width: 100%;
+  }
+
+
+  /* =========================
+     Task Item Mobile
+     ========================= */
+
+  .taskItem {
+    align-items: flex-start;
+
+    padding: 14px;
+  }
+
+
+  /* =========================
+     Action Buttons Mobile
+     ========================= */
+
+  .actionButtons {
+    flex-direction: column;
+  }
+
+
+  /* =========================
+     Filters Mobile
+     ========================= */
+
+  .filterButtons {
+    flex-wrap: wrap;
+  }
+
+  .filterButton,
+  .activeFilter {
+    flex: 1;
+  }
+
+
+  /* =========================
+     Statistics Mobile
+     ========================= */
+
+  .statistics {
+    grid-template-columns: 1fr;
+  }
+
+
+  /* =========================
+     Edit Mode Mobile
+     ========================= */
+
+  .editMode {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .editMode .actionButtons {
+    flex-direction: row;
+  }
+
+  .editMode .actionButtons button {
+    flex: 1;
+  }
+
+
+  /* =========================
+     Delete Confirmation Mobile
+     ========================= */
+
+  .deleteConfirmation {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .deleteMessage {
+    text-align: center;
+  }
+
+  .deleteConfirmation .actionButtons {
+    flex-direction: row;
+  }
+
+  .deleteConfirmation .actionButtons button {
+    flex: 1;
+  }
+
+
+  /* =========================
+     Empty State Mobile
+     ========================= */
+
+  .emptyState {
+    padding: 30px 15px;
+  }
+
+  .emptyIcon {
+    font-size: 38px;
+  }
+
 }
