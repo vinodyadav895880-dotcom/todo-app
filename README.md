@@ -3,6 +3,9 @@
 A modern and responsive To-Do application built using Next.js, React, TypeScript, and Redux Toolkit.
 
 This project allows users to create, manage, search, filter, edit, complete, and delete daily tasks with persistent data storage using LocalStorage.
+## 🌐 Live Demo
+
+[🚀 View Live To-Do App](https://todo-app-ochre-sigma-36.vercel.app)
 
 ---
 
